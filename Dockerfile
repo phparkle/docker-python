@@ -27,13 +27,14 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update
 RUN apt-get install -y \
   python3.12 \
-  # python3.12-dev \
-  python3.12-venv
+  python3.12-dev \
+  python3.12-venv \
+  python3.12-distutils
 
 # Configure git
-# RUN git config --global init.defaultBranch main
-# RUN git config --global credential.helper store
-# RUN git config --global pull.rebase false
+RUN git config --global init.defaultBranch main
+RUN git config --global credential.helper store
+RUN git config --global pull.rebase false
 
 # Set up root user
 RUN echo 'root:root' | chpasswd
