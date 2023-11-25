@@ -2,7 +2,6 @@ name: python
 
 volumes:
   root:
-  mariadb:
 
 services:
   python:
@@ -13,17 +12,3 @@ services:
         UBUNTU_MIRROR: ${UBUNTU_MIRROR:-http://mirror.xtom.com.hk/ubuntu/}
     volumes:
       - root:/root
-    ports:
-      - 8333:8000
-    depends_on:
-      - mariadb
-
-  mariadb:
-    image: mariadb
-    environment:
-      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
-    command: --transaction-isolation=READ-COMMITTED
-    volumes:
-      - mariadb:/var/lib/mysql
-    ports:
-      - 3333:3306
